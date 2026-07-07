@@ -14,12 +14,21 @@ body {
 /* طبقة الضباب */
 body::before {
   content: '';
-  position: fixed;
+  position: absolute;
   inset: 0;
   background: rgba(255 255 255 / 0.75);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(6px);
   z-index: -1;
 }
+/* تعديل الخلفية للجوال */
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll; /* بدل fixed */
+    background-position: center top; /* ضبط مكان الصورة */
+    background-size: cover;         /* تغطية الشاشة كاملة */
+  }
+}
+
 
 /* الحاوية الرئيسية */
 .container {
@@ -328,13 +337,92 @@ button:hover {
   transform: scale(1.01);
 }
 
+/* كل كروت الشراء بنفس الستايل */
+.info-card{
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  border-radius: 8px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  color: #5b5149;
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.info-card::before{
+  content: '';
+  flex: 1;
+}
+
+.info-card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+.info-card h3{
+  margin: 0 0 0.8rem 0;
+  font-family: 'Cairo', sans-serif;
+  font-size: 1.1rem;
+  color: #5b5149;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.info-card p{
+  color: #7a7568;
+  margin: 0.4rem 0;
+  line-height: 1.8;
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+.info-card .price{
+  font-weight: 600;
+  font-size: 1.1em;
+  color: #5b5149;
+  margin: 1.2rem 0;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+}
+
+.info-card button{
+  margin-top: auto;
+  padding: 0.9rem 2rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  background-color: #79865c;
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.info-card button{
+  margin-top: 1.5rem;
+}
+
+.info-card button:hover{
+  background-color: #5d6945;
+  transform: scale(1.01);
+}
+
+
 /* بانر التعليقات - بنفس حجم ونمط الكارد */
 /* بانر التعليقات - بنفس حجم ونمط الكارد */
 .testimonials-section {
   display: flex;
   flex-direction: column;
   position: relative;
+  max-width: 900px;
+  margin: 5rem auto 2rem;
 }
+
 
 .testimonials-section h3 {
   position: absolute;
@@ -487,12 +575,10 @@ padding: 0;
 }
 
 .step:not(:last-child) {
-  border-inline-end: none #cfc8b8;
+  border-inline-end: 1px solid #cfc8b8;
   padding-inline-end: 1rem;
   margin-inline-end: 1rem;
 }
-
-
 
 .step-icon {
   background-color: #d6d4c4;
@@ -613,7 +699,7 @@ footer .socials a:hover {
   }
   
   .cards-row {
-   grid-template-columns: 1fr;
+    grid-template-columns: 1fr;
     gap: 1.5rem;
     padding: 0 1rem;
   }
@@ -632,59 +718,27 @@ footer .socials a:hover {
   }
   
   .steps {
-   
+    flex-direction: column;
     max-width: 100%;
   }
   
   .step:not(:last-child) {
     border-inline-end: none;
-    padding-inline-end: 1rem;
-    margin-inline-end: 1rem;
+    padding-inline-end: 0;
+    margin-inline-end: 0;
     border-bottom: 1px solid #cfc8b8;
     padding-bottom: 1rem;
     margin-bottom: 1rem;
   }
-
   
   .step-icon {
     margin-bottom: 0.8rem;
   }
   
-  /*.glass-box {
-    flex-direction: row;
+  .glass-box {
+    flex-direction: column;
     gap: 1.5rem;
-  /* }* */
-  /* Glass Box - بدون Scroll */
-.glass-box {
-  display: flex;
-  flex-wrap: nowrap;                 /* تبقى أفقية */
-  justify-content: space-between;    /* توزيع متساوي بين العناصر */
-  margin: 4rem 0;
-  padding: 1rem;                     /* قلل الحشو لتوفير مساحة */
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(249, 247, 243, 0.9) 100%);
-  border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-  border: 1px solid rgba(121, 134, 92, 0.1);
-  overflow-x: hidden;                /* منع Scroll */
-}
-
-/* كل عنصر داخل Glass Box */
-.glass-item {
-  flex: 1 1 0;                       /* يسمح بالانكماش لتتناسب العناصر */
-  min-width: 0;                       /* منع تجاوز العرض */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.7em;                   /* نص أصغر لتقليل الحجم */
-  color: #3d3a34;
-  font-weight: 500;
-  text-align: center;
-  padding: 0.3rem;
-}
-
-
-
-
+  }
 }
 .booking-form {
   max-width: 500px;
