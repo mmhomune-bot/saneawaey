@@ -1,218 +1,787 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="برنامج وعي - Coaching by Shouq: يقودك إلى قرار واعٍ وتغيير حقيقي." />
-  <meta name="keywords" content="coaching, وعي, جلسات فردية, تغيير شخصي" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link rel="stylesheet" href="styles.css">
+/* التصميم الأصلي - لا تغيير */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Cairo', sans-serif;
+  background: url('img/photo_2026-01-08_03-07-00.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #5b5149;
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* طبقة الضباب */
+body::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255 255 255 / 0.75);
+  backdrop-filter: blur(6px);
+  z-index: -1;
+}
+/* تعديل الخلفية للجوال */
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll; /* بدل fixed */
+    background-position: center top; /* ضبط مكان الصورة */
+    background-size: cover;         /* تغطية الشاشة كاملة */
+  }
+}
 
 
-  <title>وعي - Coaching by Shouq</title>
-</head>
-<body>
-  <header class="hero">
-    <div class="logo">
-      <h1>وعـي</h1>
-      <h5>- Coaching by Shouq -</h5>
-    </div>
-  </header>
+/* الحاوية الرئيسية */
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 2rem 1rem;
+  text-align: center;
+}
 
-  <div class="container">
-    <p class="lead">برنامج يقودك الى قرار واعي وتغيير حقيقي</p>
- 
- 
-<section class="program-plain">
+h2 {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
 
-  <div class="program-grid">
+h3 {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
 
-    <!-- عن البرنامج -->
-    <div class="program-col program-about">
-    
-      
-       
-     
-       <h4>برنامج كوتشينج فردي مباشر وغير مسجّل، يهدف لمساعدتك على تحويل الإحساس الغامض إلى وضوح وقرار واعٍ عبر جلسات مباشرة، بشكل مهني وعميق  </h4>
-    </div>
+p.lead {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  color: #6b6359;
+}
 
-    <!-- مناسب لك -->
-    <div class="program-col program-fit">
-      <h3>مناسب لك إذا</h3>
-      <p>
-        تشعر بحيرة أو تشوش داخلي، تعرف ما تريد لكنك متردد من أين تبدأ، ولديك استعداد حقيقي للفهم والتغيير.
-        <br>
-        البرنامج
-       غير مناسب لمن يبحث عن حلول سريعة أو دعم عاطفي مؤقت
-      </p>
+button {
+  background-color: #79865c;
+  border: none;
+  padding: 0.75rem 1.8rem;
+  font-size: 1rem;
+  color: #f0f0e9;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 
-      <div class="program-action">
-        <a href="https://calendly.com/shoog-m-830/meet-with-me" target="_blank"> <button>احجز جلسة استكشافية مجانية</button></a>
+button:hover {
+  background-color: #657344;
+}
+
+/* الشعار في الهيدر - محسّن ليبدو كشعار احترافي */
+.hero {
+  text-align: center;
+  padding: 30px 20px 25px;
+  position: relative;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(255,255,255,0.6));
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  margin-bottom: 20px;
+}
+
+.logo {
+  display: inline-block;
+  position: relative;
+}
+
+.logo h1 {
+  font-family: 'Amiri', serif;
+  font-size: 2.8rem;
+  margin: 0;
+  background: linear-gradient(135deg, #79865c 0%, #5d6945 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+.logo h5 {
+  font-size: 0.95em;
+  margin: 5px 0 0 0;
+  font-weight: 400;
+  color: #7a7a59;
+  letter-spacing: 1px;
+  font-family: 'Cairo', sans-serif;
+}
+
+/* خط زخرفي تحت الشعار */
+.logo::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #79865c, transparent);
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.program-section {
+  text-align: right;
+  padding: 1.2rem 1rem;
+  border-radius: 15px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(249,247,243,0.9) 100%);
+  border: 1px solid rgba(121,134,92,0.15);
+  margin: 2rem 0;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.program-section h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #5b5149;
+}
+
+/* Accordion زر */
+.accordion-toggle {
+  background-color: #fff;
+  color: #5b5149;
+  cursor: pointer;
+  padding: 0.8rem 1rem;
+  width: 100%;
+  border: 1px solid #d6d4c4;
+  outline: none;
+  text-align: right;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 8px;
+  margin: 0.4rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.accordion-toggle:hover {
+  background-color: #f9f7f3;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.accordion-toggle .arrow {
+  font-size: 0.9rem;
+  transition: transform 0.3s ease;
+}
+
+/* تدوير السهم عند الفتح */
+.accordion-toggle.active .arrow {
+  transform: rotate(180deg);
+  color: #79865c;
+}
+
+/* محتوى Accordion */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+  background-color: rgba(255,255,255,0.9);
+  padding: 0 1rem;
+  border-radius: 0 0 8px 8px;
+  margin-bottom: 0.5rem;
+}
+
+.accordion-content p,
+.accordion-content ul {
+  margin: 0.5rem 0;
+  text-align: right;
+  font-size: 0.78rem;
+}
+
+.accordion-content ul {
+  padding-inline-start: 1rem;
+  list-style-type: disc;
+}
+.program-plain {
+  padding: 2rem 1.5rem;
+}
+
+.program-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 3rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.program-col h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+  text-align: right;
+}
+
+.program-col p {
+  font-size: 0.82rem;
+  line-height: 1.9;
+  text-align: right;
+}
+
+.program-action {
+  margin-top: 1.6rem;
+  text-align: right;
+}
+
+.program-action button {
+  background-color: #79865c;
+  border: none;
+  padding: 0.75rem 1.8rem;
+  font-size: 1rem;
+  color: #f0f0e9;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.program-action button:hover {
+  background-color: #657344;
+}
+
+/* موبايل */
+@media (max-width: 768px) {
+  .program-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .program-action {
+    text-align: center;
+  }
+}
 
 
-      </div>
-    </div>
+/* قسم الكارد والتعليقات جنباً إلى جنب - محسّن */
+.cards-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  justify-content: center;
+  margin: 2.5rem auto;
+  max-width: 900px;
+}
 
-  </div>
+/* كارد الحجز - تصميم بسيط ونظيف */
+.booking-card {
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  border-radius: 8px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  color: #5b5149;
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: none;
+  position: relative;
+  overflow: hidden;
 
-</section>
-
-<br>
-<br>
-    <!-- قسم الكارد والتعليقات بجانب بعض -->
-    <div class="cards-row">
-      <!-- كارد الحجز -->
-    
-      <div class="booking-card">
-        <h3>4 جلسات فردية مباشرة</h3>
-        <p>مدة الجلسة ساعة</p>
-        <p> عن بعد  (Zoom)</p>
-        <p class="price">499 ريال</p>
-        <a href="https://calendly.com/shoog-m-830/meet-with-me" target="_blank"> <button>احجز الان</button></a>
-
-      </div>
-<br>
-      <!-- بانر التعليقات -->
-      <section class="testimonials-section">
-       
-        <h3>آراء العملاء</h3>
-        
-        <div class="testimonials-banner">
-          <div class="testimonial-slider">
-            <div class="testimonial active">
-              <img src="img/testimonial1.jpg" alt="تعليق عميل 1">
-            </div>
-            <div class="testimonial">
-              <img src="img/testimonial2.jpg" alt="تعليق عميل 2">
-            </div>
-            <div class="testimonial">
-              <img src="img/testimonial3.jpg" alt="تعليق عميل 3">
-            </div>
-            <div class="testimonial">
-              <img src="img/testimonial4.jpg" alt="تعليق عميل 4">
-            </div>
-            <div class="testimonial">
-              <img src="img/testimonial5.jpg" alt="تعليق عميل 5">
-            </div>
-            <div class="testimonial">
-              <img src="img/testimonial6.jpg" alt="تعليق عميل 6">
-            </div>
-            <div class="testimonial">
-              <img src="img/testimonial7.jpg" alt="تعليق عميل 7">
-            </div>
-            <div class="testimonial">
-              <img src="img/testimonial8.jpg" alt="تعليق عميل 8">
-            </div>
-             <div class="testimonial">
-              <img src="img/testimonial9.jpg" alt="تعليق عميل 9">
-            </div>
-          </div>
-          <div class="slider-controls">
-            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
-            <button class="next" onclick="changeSlide(1)">&#10095;</button>
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <!-- خطوات العمل المحدثة -->
-    <h3>خطوات العمل</h3>
-    <section class="steps" aria-label="خطوات العمل">
-      <div class="step">
-        <div class="step-icon">
-          <i class="fas fa-calendar-check"></i>
-        </div>
-        <p>احجز جلسة استكشافية</p>
-        <small>جلسة قصيرة للتعارف والتأكد من مناسبة البرنامج لك</small>
-      </div>
-
-      <div class="step">
-        <div class="step-icon">
-          <i class="fas fa-route"></i>
-        </div>
-        <p>ثم نحدد المسار المناسب</p>
-        <small>نفهم وضعك الحالي ونقرر معاً إن كان هذا البرنامج يخدمك</small>
-      </div>
-
-      <div class="step">
-        <div class="step-icon">
-          <i class="fas fa-check-circle"></i>
-        </div>
-        <p>ثم نبدأ الجلسات بوضوح والتزام</p>
-        <small>أربع جلسات فردية مباشرة تقودك لقرار واعٍ وتغيير حقيقي</small>
-      </div>
-    </section>
-<!-- الشريط الزجاجي المحدث -->
- <section>
-      <div class="glass-box">
-        <div class="glass-item"><span class="dot"></span> خصوصية تامه ومضمونة</div>
-        <div class="glass-item"><span class="dot"></span> دعم مستمر ومتابعة شخصية</div>
-        <div class="glass-item"><span class="dot"></span> نتائج ملموسة وتغيير إيجابي</div>
-      </div>
-    </section>
-
-    <footer>
-      <div class="title">وعي</div>
-      <div class="subtitle">- Coaching by Shouq -</div>
-      <div class="socials" aria-label="روابط التواصل الاجتماعي">
-        <a href="http://wa.me/966555736723" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://www.tiktok.com/@saneawaey?_r=1&_t=ZS-93CvM0wlCeA" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-        <a href="https://www.instagram.com/saneawaey?igsh=NHZ3aWY2bzB4eTFw&utm_source=qr" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      </div>
-    </footer>
-  </div>
-
-  <script>
-    // JavaScript بسيط للشرايح (carousel)
-    let currentSlide = 0;
-    const testimonials = document.querySelectorAll('.testimonial');
-    const totalSlides = testimonials.length;
-
-    function showSlide(index) {
-      testimonials.forEach((slide, i) => {
-        slide.classList.remove('active');
-        if (i === index) slide.classList.add('active');
-      });
-    }
-
-    function changeSlide(direction) {
-      currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
-      showSlide(currentSlide);
-    }
-
-    // انتقال تلقائي كل 5 ثوانٍ
-    setInterval(() => changeSlide(1), 10000);
-
-    // بدء الشرايح
-    showSlide(currentSlide);
-  </script>
- 
- <script>
-const accordions = document.querySelectorAll('.accordion-toggle');
-
-accordions.forEach(button => {
-  button.addEventListener('click', () => {
-    const content = button.nextElementSibling;
-    const maxHeight = content.style.maxHeight;
-
-    // إغلاق جميع المحتويات الأخرى
-    document.querySelectorAll('.accordion-content').forEach(c => c.style.maxHeight = null);
-    document.querySelectorAll('.accordion-toggle').forEach(btn => btn.classList.remove('active'));
-
-    if (!maxHeight || maxHeight === "0px") {
-      content.style.maxHeight = content.scrollHeight + "px";
-      button.classList.add('active'); // لتدوير السهم
-    } else {
-      content.style.maxHeight = null;
-      button.classList.remove('active');
-    }
-  });
-});
-</script>
+  display: flex;
+  flex-direction: column;
+}
+.booking-card::before {
+  content: '';
+  flex: 1;
+}
 
 
-</body>
-</html>
+.booking-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+.booking-card h3 {
+  margin: 0 0 0.8rem 0;
+  font-family: 'Cairo', sans-serif;
+  font-size: 1.1rem;
+  color: #5b5149;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.booking-card p {
+  color: #7a7568;
+  margin: 0.4rem 0;
+  line-height: 1.8;
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+.booking-card .price {
+  font-weight: 600;
+  font-size: 1.1em;
+  color: #5b5149;
+  margin: 1.2rem 0;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+}
+
+.booking-card button {
+  margin-top: auto;
+  padding: 0.9rem 2rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  background-color: #79865c;
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.booking-card button {
+  margin-top: 1.5rem;
+}
+
+.booking-card button:hover {
+  background-color: #5d6945;
+  transform: scale(1.01);
+}
+
+/* كل كروت الشراء بنفس الستايل */
+.info-card{
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  border-radius: 8px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  color: #5b5149;
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.info-card::before{
+  content: '';
+  flex: 1;
+}
+
+.info-card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+.info-card h3{
+  margin: 0 0 0.8rem 0;
+  font-family: 'Cairo', sans-serif;
+  font-size: 1.1rem;
+  color: #5b5149;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.info-card p{
+  color: #7a7568;
+  margin: 0.4rem 0;
+  line-height: 1.8;
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+.info-card .price{
+  font-weight: 600;
+  font-size: 1.1em;
+  color: #5b5149;
+  margin: 1.2rem 0;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+}
+
+.info-card button{
+  margin-top: auto;
+  padding: 0.9rem 2rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  background-color: #79865c;
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.info-card button{
+  margin-top: 1.5rem;
+}
+
+.info-card button:hover{
+  background-color: #5d6945;
+  transform: scale(1.01);
+}
+
+
+/* بانر التعليقات - بنفس حجم ونمط الكارد */
+/* بانر التعليقات - بنفس حجم ونمط الكارد */
+.testimonials-section {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  max-width: 900px;
+  margin: 5rem auto 2rem;
+}
+
+
+.testimonials-section h3 {
+  position: absolute;
+  top: -4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  color: #7a7568;
+  font-family: 'Cairo', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+.testimonials-banner {
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #e8e3d6;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.testimonial-slider {
+  min-height: auto;
+  padding-bottom: 3rem;
+}
+
+
+.testimonial {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow: hidden;
+padding: 0;
+
+}
+
+.testimonial.active {
+  opacity: 1;
+}
+
+.testimonial img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* تخصيص شريط السكرول */
+.testimonial::-webkit-scrollbar {
+  width: 5px;
+}
+
+.testimonial::-webkit-scrollbar-track {
+  background: rgba(121, 134, 92, 0.05);
+  border-radius: 10px;
+}
+
+.testimonial::-webkit-scrollbar-thumb {
+  background: #79865c;
+  border-radius: 10px;
+}
+
+.testimonial::-webkit-scrollbar-thumb:hover {
+  background: #657344;
+}
+
+.slider-controls {
+  position: absolute;
+ bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.7rem;
+  z-index: 10;
+  
+}
+
+.slider-controls button {
+  background: #79865c;
+  border: none;
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  box-shadow: 0 3px 8px rgba(121, 134, 92, 0.3);
+}
+
+.slider-controls button:hover {
+  background: #657344;
+  transform: scale(1.1);
+  box-shadow: 0 5px 12px rgba(121, 134, 92, 0.4);
+}
+.testimonial-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  max-width: 90%;
+  margin: 0 auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+
+@media (max-width: 768px) {
+  .testimonial-card {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+}
+
+
+
+
+
+/* خطوات العمل */
+.steps {
+  margin: 4rem 0 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  direction: rtl;
+}
+
+.step {
+  flex: 1;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #5b5149;
+}
+
+.step:not(:last-child) {
+  border-inline-end: 1px solid #cfc8b8;
+  padding-inline-end: 1rem;
+  margin-inline-end: 1rem;
+}
+
+.step-icon {
+  background-color: #d6d4c4;
+  width: 50px;
+  height: 50px;
+  margin: 0 auto 0.5rem auto;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  color: #79865c;
+}
+
+.step p {
+  font-weight: 700;
+  margin: 10px 0 5px 0;
+  font-family: 'Cairo', sans-serif;
+  color: #3d3a34;
+  font-size: 1rem;
+}
+
+.step small {
+  display: block;
+  font-size: 0.85em;
+  color: #6b6359;
+  line-height: 1.5;
+  margin-top: 0.5rem;
+}
+
+/* تعديل البانر السفلي */
+.glass-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.5rem;
+  margin: 4rem 0;
+  padding: 2.5rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(249, 247, 243, 0.9) 100%);
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  border: 1px solid rgba(121, 134, 92, 0.1);
+}
+
+.glass-item {
+  display: flex;
+  align-items: center;
+  font-size: 1.1em;
+  color: #3d3a34;
+  font-weight: 500;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(135deg, #79865c, #9a987d);
+  border-radius: 50%;
+  margin-left: 12px;
+  box-shadow: 0 2px 6px rgba(121, 134, 92, 0.3);
+}
+
+/* الفوتر */
+footer {
+  margin-top: 4rem;
+  padding: 2rem 1rem 1rem;
+  text-align: center;
+  font-family: 'Cairo', sans-serif;
+  color: #5b5149;
+}
+
+footer .title {
+  font-size: 2.5rem;
+  margin-bottom: 0.2rem;
+  font-family: 'Amiri', serif;
+}
+
+footer .subtitle {
+  font-size: 0.9rem;
+  color: #7a7a59;
+  margin-bottom: 1.2rem;
+}
+
+footer .socials {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 1.3rem;
+  color: #79865c;
+}
+
+/* أيقونات التواصل في الفوتر */
+footer .socials a {
+  color: #79865c;
+  transition: all 0.3s;
+  display: inline-flex;
+  width: 45px;
+  height: 45px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(121, 134, 92, 0.1);
+}
+footer .socials a:hover {
+  color: #fff;
+  background: #79865c;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(121, 134, 92, 0.3);
+}
+
+/* استجابة الجوال */
+@media (max-width: 768px) {
+  .logo h1 {
+    font-size: 2.2rem;
+  }
+  
+  .logo h5 {
+    font-size: 0.85em;
+  }
+  
+  .cards-row {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+  
+  .booking-card {
+    padding: 1.8rem 1.5rem;
+  }
+  
+  .testimonial-slider {
+    min-height: 250px;
+  }
+  
+  .slider-controls button {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .steps {
+    flex-direction: column;
+    max-width: 100%;
+  }
+  
+  .step:not(:last-child) {
+    border-inline-end: none;
+    padding-inline-end: 0;
+    margin-inline-end: 0;
+    border-bottom: 1px solid #cfc8b8;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .step-icon {
+    margin-bottom: 0.8rem;
+  }
+  
+  .glass-box {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+.booking-form {
+  max-width: 500px;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.booking-form label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.booking-form input,
+.booking-form select,
+.booking-form textarea {
+  padding: 0.8rem;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  border: 1px solid #d6d4c4;
+}
+
+.booking-form textarea {
+  resize: vertical;
+}
+
+.booking-form small {
+  font-size: 0.75rem;
+  color: #6b6359;
+}
+
+.booking-form button {
+  background-color: #79865c;
+  color: #fff;
+  padding: 0.9rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.booking-form button:hover {
+  background-color: #657344;
+}
